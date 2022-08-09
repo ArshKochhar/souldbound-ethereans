@@ -5,10 +5,22 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.min.css";
 
+import Web3 from "web3";
+import { Web3ReactProvider } from "@web3-react/core";
+import { MetaMaskProvider } from "./hooks/connectMetaMask";
+
+function getLibrary(provider, connector) {
+    return new Web3(provider);
+}
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
     <React.StrictMode>
-        <App />
+        <Web3ReactProvider getLibrary={getLibrary}>
+            <MetaMaskProvider>
+                <App />
+            </MetaMaskProvider>
+        </Web3ReactProvider>
     </React.StrictMode>
 );
 
