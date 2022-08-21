@@ -13,6 +13,7 @@ export const MetaMaskProvider = ({ children }) => {
 
     // Init Loading
     useEffect(() => {
+        // Look into this, this might be what is causing metamask to be triggered upon starting the app
         connect().then((val) => {
             setIsLoading(false);
         });
